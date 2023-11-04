@@ -13,7 +13,7 @@ class BackGround_widget extends StatelessWidget {
       height: heightScreen,
       width: widthScreen,
       color: AppColors.whiteGrey_01, 
-      child: Image.asset('assets/img/background_login.jpg',fit: BoxFit.cover,)
+      child: Image.asset('assets/img/background_login.jpg',fit: BoxFit.fill,)
     );
   }
 }

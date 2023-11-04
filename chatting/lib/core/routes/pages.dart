@@ -1,5 +1,5 @@
 import 'package:chatting/core/routes/routes.dart';
-import 'package:chatting/presentation/modules/loginPage/screen/loginScreen.dart';
+import 'package:chatting/presentation/modules/loginScreen/screen/loginScreen.dart';
 import 'package:chatting/presentation/modules/splashPage/screen/splashScreen.dart';
 import 'package:get/route_manager.dart';
 

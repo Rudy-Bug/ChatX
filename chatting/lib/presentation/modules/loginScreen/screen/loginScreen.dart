@@ -1,5 +1,5 @@
-import 'package:chatting/presentation/modules/loginPage/widgets/backGroundWidget.dart';
-import 'package:chatting/presentation/modules/loginPage/widgets/loginTemplateWidget.dart';
+import 'package:chatting/presentation/modules/loginScreen/widgets/backGroundWidget.dart';
+import 'package:chatting/presentation/modules/loginScreen/widgets/loginTemplateWidget.dart';
 import 'package:flutter/material.dart';
 
 
