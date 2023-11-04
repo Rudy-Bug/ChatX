@@ -9,6 +9,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+
+
   TextEditingController loginEmailController = TextEditingController();
   TextEditingController loginPasswordController = TextEditingController();
 
@@ -16,7 +18,12 @@ class _SignInState extends State<SignIn> {
   final FocusNode focusNodePassword = FocusNode();
 
   bool _obscureTextPassword = true;
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    
+    super.initState();
+  }
   @override
   void dispose() {
     focusNodeEmail.dispose();
@@ -29,7 +36,7 @@ class _SignInState extends State<SignIn> {
     return Container(
       padding: const EdgeInsets.only(top: 23.0),
       child: Column(
-        children: <Widget>[
+        children: [
           Stack(
             alignment: Alignment.topCenter,
             children: <Widget>[
@@ -37,9 +44,9 @@ class _SignInState extends State<SignIn> {
                 elevation: 2.0,
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(25.0),
                 ),
-                child: Container(
+                child: SizedBox(
                   width: 300.0,
                   height: 190.0,
                   child: Column(
@@ -48,23 +55,21 @@ class _SignInState extends State<SignIn> {
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
+                       
                           focusNode: focusNodeEmail,
                           controller: loginEmailController,
                           keyboardType: TextInputType.emailAddress,
                           style: const TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
-                              fontSize: 16.0,
-                              color: Colors.black),
+                              fontSize: 16.0, color: Colors.black),
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(
-                              Icons.access_alarm,
+                              Icons.person,
                               color: Colors.black,
-                              size: 22.0,
+                              size: 25.0,
                             ),
                             hintText: 'Email Address',
-                            hintStyle: TextStyle(
-                                fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
+                            hintStyle: TextStyle(fontSize: 17.0),
                           ),
                           onSubmitted: (_) {
                             focusNodePassword.requestFocus();
@@ -95,8 +100,7 @@ class _SignInState extends State<SignIn> {
                               color: Colors.black,
                             ),
                             hintText: 'Password',
-                            hintStyle: const TextStyle(
-                                fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
+                            hintStyle: const TextStyle(fontSize: 17.0),
                             suffixIcon: GestureDetector(
                               onTap: _toggleLogin,
                               child: Icon(
@@ -153,12 +157,14 @@ class _SignInState extends State<SignIn> {
                     child: Text(
                       'LOGIN',
                       style: TextStyle(
+                          fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          fontSize: 25.0,
-                          fontFamily: 'WorkSansBold'),
+                          fontSize: 25.0,),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+
+                  },
                 ),
               )
             ],
@@ -166,12 +172,14 @@ class _SignInState extends State<SignIn> {
           Padding(
             padding: const EdgeInsets.only(top: 10.0),
             child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+
+                },
                 child: const Text(
                   'Forgot Password?',
                   style: TextStyle(
                       decoration: TextDecoration.underline,
-                      color: Colors.white,
+                      color: AppColors.grey_001,
                       fontSize: 16.0,
                       fontFamily: 'WorkSansMedium'),
                 )),
@@ -185,8 +193,8 @@ class _SignInState extends State<SignIn> {
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         colors: <Color>[
-                          Colors.white10,
-                          Colors.white,
+                          AppColors.grey_001,
+                          AppColors.black_001,
                         ],
                         begin: FractionalOffset(0.0, 0.0),
                         end: FractionalOffset(1.0, 1.0),
@@ -201,17 +209,16 @@ class _SignInState extends State<SignIn> {
                   child: Text(
                     'Or',
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.0,
-                        fontFamily: 'WorkSansMedium'),
+                        color: AppColors.grey_001,
+                        fontSize: 16.0,),
                   ),
                 ),
                 Container(
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         colors: <Color>[
-                          Colors.white,
-                          Colors.white10,
+                            AppColors.black_001,
+                          AppColors.grey_001,
                         ],
                         begin: FractionalOffset(0.0, 0.0),
                         end: FractionalOffset(1.0, 1.0),

@@ -12,6 +12,11 @@ class AppColors{
   static const Color whiteGrey_01 =  Color.fromARGB(255, 220, 217, 217) ;  
   static const Color whiteBlue_21 =  Color.fromARGB(255, 52, 138, 199) ;  
   static const Color whiteMint_21 =  Color.fromARGB(255, 14, 190, 190)  ;
+  static const Color whiteMint_22 =  Color.fromARGB(255, 236, 255, 255)  ;
+  static const Color grey_001 =  Color.fromARGB(255, 60, 72, 72)  ;
+  static const Color black_001 =  Color.fromARGB(255, 24, 26, 26)  ;
+  static const Color mintBlue_001 =   Color.fromARGB(255, 163, 247, 247)  ;
+
 
    static  LinearGradient linearStandard = const LinearGradient(
     colors: <Color>[whiteBlue_21, whiteMint_21],

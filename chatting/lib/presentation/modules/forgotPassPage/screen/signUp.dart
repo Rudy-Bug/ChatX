@@ -1,11 +1,8 @@
 import 'package:chatting/core/themes/constantColor.dart';
 import 'package:flutter/material.dart';
 
-
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
-
-
 
   @override
   _SignUpState createState() => _SignUpState();
@@ -48,9 +45,9 @@ class _SignUpState extends State<SignUp> {
                 elevation: 2.0,
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(25.0),
                 ),
-                child: Container(
+                child: SizedBox(
                   width: 300.0,
                   height: 360.0,
                   child: Column(
@@ -65,8 +62,7 @@ class _SignUpState extends State<SignUp> {
                           textCapitalization: TextCapitalization.words,
                           autocorrect: false,
                           style: const TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.black),
+                              fontSize: 16.0, color: Colors.black),
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(
@@ -74,8 +70,7 @@ class _SignUpState extends State<SignUp> {
                               color: Colors.black,
                             ),
                             hintText: 'Name',
-                            hintStyle: TextStyle(
-                                 fontSize: 16.0),
+                            hintStyle: TextStyle(fontSize: 16.0),
                           ),
                           onSubmitted: (_) {
                             focusNodeEmail.requestFocus();
@@ -96,8 +91,7 @@ class _SignUpState extends State<SignUp> {
                           keyboardType: TextInputType.emailAddress,
                           autocorrect: false,
                           style: const TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.black),
+                              fontSize: 16.0, color: Colors.black),
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(
@@ -105,7 +99,7 @@ class _SignUpState extends State<SignUp> {
                               color: Colors.black,
                             ),
                             hintText: 'Email Address',
-                            hintStyle: TextStyle( fontSize: 16.0),
+                            hintStyle: TextStyle(fontSize: 16.0),
                           ),
                           onSubmitted: (_) {
                             focusNodePassword.requestFocus();
@@ -126,8 +120,7 @@ class _SignUpState extends State<SignUp> {
                           obscureText: _obscureTextPassword,
                           autocorrect: false,
                           style: const TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.black),
+                              fontSize: 16.0, color: Colors.black),
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: const Icon(
@@ -137,7 +130,9 @@ class _SignUpState extends State<SignUp> {
                             hintText: 'Password',
                             hintStyle: const TextStyle(fontSize: 16.0),
                             suffixIcon: GestureDetector(
-                              onTap: _toggleSignup,
+                              onTap:() {
+                                
+                              },
                               child: Icon(
                                 _obscureTextPassword
                                     ? Icons.remove_red_eye
@@ -166,8 +161,7 @@ class _SignUpState extends State<SignUp> {
                           obscureText: _obscureTextConfirmPassword,
                           autocorrect: false,
                           style: const TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.black),
+                              fontSize: 16.0, color: Colors.black),
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: const Icon(
@@ -175,9 +169,11 @@ class _SignUpState extends State<SignUp> {
                               color: Colors.black,
                             ),
                             hintText: 'Confirmation',
-                            hintStyle: const TextStyle( fontSize: 16.0),
+                            hintStyle: const TextStyle(fontSize: 16.0),
                             suffixIcon: GestureDetector(
-                              onTap: _toggleSignupConfirm,
+                              onTap:() {
+                                
+                              },
                               child: Icon(
                                 _obscureTextConfirmPassword
                                     ? Icons.remove_red_eye
@@ -203,7 +199,7 @@ class _SignUpState extends State<SignUp> {
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                      color: AppColors.blueLight_01 ,
+                      color: AppColors.blueLight_01,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
@@ -215,7 +211,7 @@ class _SignUpState extends State<SignUp> {
                   ],
                   gradient: LinearGradient(
                       colors: <Color>[
-                         AppColors.blueLight_01,
+                        AppColors.blueLight_01,
                         AppColors.whiteMint_21
                       ],
                       begin: FractionalOffset(0.2, 0.2),
@@ -225,7 +221,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 child: MaterialButton(
                   highlightColor: Colors.transparent,
-                  splashColor:   AppColors.whiteMint_21 ,
+                  splashColor: AppColors.whiteMint_21,
                   //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                   child: const Padding(
                     padding:
@@ -252,15 +248,7 @@ class _SignUpState extends State<SignUp> {
     // CustomSnackBar(context, const Text('SignUp button pressed'));
   }
 
-  void _toggleSignup() {
-    setState(() {
-      _obscureTextPassword = !_obscureTextPassword;
-    });
-  }
 
-  void _toggleSignupConfirm() {
-    setState(() {
-      _obscureTextConfirmPassword = !_obscureTextConfirmPassword;
-    });
-  }
+
+
 }

@@ -3,11 +3,12 @@ import 'dart:async';
 import 'package:chatting/data/models/streamModel/loginProcess.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessEvent.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessState.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginProcessBloc extends Bloc<LoginProcesEvent, ProcessLoginState> {
-  LoginProcessBloc({required ProcessLogin processLogin})
-      : _processLogin = processLogin,
+  LoginProcessBloc({required ProcessLogin processLogin })
+      : _processLogin = processLogin,  
         super(const ProcessLoginState.login()) {
     on<StatusChangedLoginProcess>(_onStatusChangedLoginProcess);
     on<StatusReturnLoginProcess>(_onStatusReturnLoginProcess);
