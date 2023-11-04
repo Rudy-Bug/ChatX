@@ -125,13 +125,13 @@ class _SignInState extends State<SignIn> {
                   boxShadow: <BoxShadow>[
                     BoxShadow(
                       color: AppColors.blueLight_01,
-                      offset: Offset(1.0, 6.0),
-                      blurRadius: 20.0,
+                      offset: Offset(1.0, 3.0),
+                      blurRadius: 8.0,
                     ),
                     BoxShadow(
                       color: AppColors.whiteMint_21,
-                      offset: Offset(1.0, 6.0),
-                      blurRadius: 20.0,
+                      offset: Offset(1.0, 3.0),
+                      blurRadius: 8.0,
                     ),
                   ],
                   gradient: LinearGradient(

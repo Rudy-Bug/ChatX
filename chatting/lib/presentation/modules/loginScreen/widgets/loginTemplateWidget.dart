@@ -1,4 +1,4 @@
-import 'package:chatting/core/themes/constantColor.dart';
+
 import 'package:chatting/presentation/global/utils/bubble_indicator_painter.dart';
 import 'package:chatting/presentation/modules/loginScreen/widgets/signIn.dart';
 import 'package:chatting/presentation/modules/loginScreen/widgets/signUp.dart';
@@ -34,6 +34,7 @@ class _LoginTemPlate_Widget extends State<LoginTemPlate_Widget>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true ,
       backgroundColor: Colors.transparent,
       body: GestureDetector(
         onTap: () {
@@ -78,7 +79,7 @@ class _LoginTemPlate_Widget extends State<LoginTemPlate_Widget>
                     ),
                     ConstrainedBox(
                       constraints: const BoxConstraints.expand(),
-                      child:  SignUp(),
+                      child:const  SignUp(),
                     ),
                   ],
                 ))

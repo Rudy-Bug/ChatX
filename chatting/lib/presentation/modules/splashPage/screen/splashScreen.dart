@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class SplashScreen extends StatefulWidget {
+
+  static Route<void> route() {
+    return MaterialPageRoute<void>(builder: (_) => const SplashScreen());
+  }
   const SplashScreen({super.key});
 
   @override
@@ -12,6 +16,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreen extends State<SplashScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +26,8 @@ class _SplashScreen extends State<SplashScreen> {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              AppColors.blueLight_01,
-              AppColors.greenLight_01,
+              AppColors.whiteBlue_21,
+              AppColors.whiteMint_21,
             ],
           )),
           child: const Center(

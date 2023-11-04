@@ -9,11 +9,14 @@ class BackGround_widget extends StatelessWidget {
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.sizeOf(context).height;
     double widthScreen = MediaQuery.sizeOf(context).width;
-    return Container(
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: Container(
       height: heightScreen,
       width: widthScreen,
       color: AppColors.whiteGrey_01, 
       child: Image.asset('assets/img/background_login.jpg',fit: BoxFit.fill,)
-    );
+    ),
+    ) ; 
   }
 }
