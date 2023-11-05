@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 class AppScreen extends StatefulWidget{
+  const AppScreen({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _AppScreen() ;  
@@ -26,8 +28,10 @@ class _AppScreen extends State<AppScreen>{
           case AuthenticationStatus.unknown:
           break ; 
           case AuthenticationStatus.unauthenticated:
-          Get.offAndToNamed( Routes.login) ;  // dispose all page before stack :v
+          Get.offAndToNamed( Routes.login) ; 
+          break ; // dispose all page before stack :v
           case AuthenticationStatus.authenticated:
+          print("Hello world?") ; 
           break ;  
         }
       },

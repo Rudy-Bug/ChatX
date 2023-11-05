@@ -1,13 +1,14 @@
-import 'package:chatting/core/themes/constantString.dart';
+
 
 class User {
-  final String name;
-  final String email;
-  final String password;
-  final String number;
-  final String code_id = AppStrings.appCodeDefault;
-  final List<String> codeId = List.empty();
+   String name;
+   String email;
+   String password;
+   String code_id ;
+   List<String> codeId = List.empty();
 
   User(
-      {this.name = "", this.email = " ", this.number = "", this.password = ""});
+      {this.name = "", this.email = " ", this.password = "" ,  this.code_id =""});
 }
+
+

@@ -1,12 +1,15 @@
 import 'package:chatting/core/routes/pages.dart';
 import 'package:chatting/core/routes/routes.dart';
+
 import 'package:chatting/data/models/streamModel/authenticate.dart';
 import 'package:chatting/presentation/global/AppScreen/modulesBloc/authentication/authenBloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
-void main() {
+
+void main()  {
+
   runApp(const MyApp());
 }
 
@@ -24,9 +27,13 @@ class _MyApp extends State<MyApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _authenticationRes = AuthenticationRes();
+  }
+  @override
+  void dispose() {
+      _authenticationRes.dispose() ;  
+    super.dispose();
   }
 
   @override

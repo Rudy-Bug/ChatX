@@ -10,7 +10,7 @@ abstract class AppPages{
     static final List<GetPage> pages =  [
        GetPage(page: () => const SplashScreen(), name: Routes.splash  ) , 
        GetPage(page: () => const LoginScreen(), name: Routes.login  ) , 
-       GetPage(page: () =>  AppScreen(), name: Routes.root  ) , 
+       GetPage(page: () => const AppScreen(), name: Routes.root  ) , 
        GetPage(page: () => const LoadingScreen(), name: Routes.loading  ) , 
        GetPage(page: () => const HomeScreen(), name: Routes.home  ) , 
       //  GetPage(page: () => const LoginScreen(), name: Routes.login  ) , 

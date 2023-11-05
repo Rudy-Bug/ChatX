@@ -35,14 +35,17 @@ class _LoginScreen extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //  return   Scaffold(
-    //   resizeToAvoidBottomInset: true,
-    //   backgroundColor: Colors.white,
-    //     body:  Stack(children: [
-    //             BackGround_widget(),
-    //             LoginTemPlate_Widget(),
-    //         ]),
-    //     ) ;
+
+    /*
+     return   Scaffold(
+      resizeToAvoidBottomInset: true,
+      backgroundColor: Colors.white,
+        body:  Stack(children: [
+                BackGround_widget(),
+                LoginTemPlate_Widget(),
+            ]),
+        ) ;
+   */
 
     return RepositoryProvider.value(
       value: _processLoginValue,
@@ -54,7 +57,8 @@ class _LoginScreen extends State<LoginScreen> {
               listener: (context, state) {
                 switch (state.status) {
                   case ProcessLoginStatus.login:
-                    print("into here login ? ?") ; 
+                  print("into here login?") ;
+                  
                   // Get.toNamed(Routes.loading) ;  
                     break;
                   case ProcessLoginStatus.forgot:
@@ -73,7 +77,7 @@ class _LoginScreen extends State<LoginScreen> {
                   BackGround_widget(),
                   LoginTemPlate_Widget(),
                 ]),
-              ),
+              ), 
             );
           },
           onGenerateRoute: (settings) => LoadingScreen.route(),

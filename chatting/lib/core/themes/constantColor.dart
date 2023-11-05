@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 class AppColors{
   static const Color greenLight_01 =  Color.fromARGB(255, 73, 219, 132) ;  
   static const Color blueLight_01 =  Color.fromARGB(255, 114, 179, 211) ;  
+  static const Color blueLight_02  =  Color.fromARGB(255, 33, 136, 187) ;  
   static const Color whitePupble =  Color.fromARGB(255, 202, 191, 212) ; 
   static const Color blackKa =    Color.fromARGB(255, 33, 6, 58) ;  
   static const Color whiteGrey_01 =  Color.fromARGB(255, 220, 217, 217) ;  

@@ -13,6 +13,13 @@ class AuthenticationRes {
     yield* _authenticateStreamController.stream;
   }
 
+
+  void login() {
+    print("Into here ? ") ;  
+    _authenticateStreamController.add(AuthenticationStatus.authenticated);
+       print("Join stream ? ") ;  
+  }
+
   void logOut() {
     _authenticateStreamController.add(AuthenticationStatus.unauthenticated);
   }
