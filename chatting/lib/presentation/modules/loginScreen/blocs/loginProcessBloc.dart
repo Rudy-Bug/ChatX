@@ -12,6 +12,7 @@ class LoginProcessBloc extends Bloc<LoginProcesEvent, ProcessLoginState> {
         super(const ProcessLoginState.login()) {
     on<StatusChangedLoginProcess>(_onStatusChangedLoginProcess);
     on<StatusReturnLoginProcess>(_onStatusReturnLoginProcess);
+    _controllerStreamLoginProcess = _processLogin.status.listen((event) => add(StatusChangedLoginProcess(event)) ) ;  
   }
   final ProcessLogin _processLogin;
 
@@ -37,6 +38,6 @@ class LoginProcessBloc extends Bloc<LoginProcesEvent, ProcessLoginState> {
       }
     
     void _onStatusReturnLoginProcess(StatusReturnLoginProcess event , Emitter<ProcessLoginState> emit) {
-      _processLogin.LoginProcess() ;  
+      _processLogin.loginProcess() ;  
     }
 }

@@ -9,25 +9,17 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-
-
   TextEditingController loginEmailController = TextEditingController();
   TextEditingController loginPasswordController = TextEditingController();
-
-  final FocusNode focusNodeEmail = FocusNode();
-  final FocusNode focusNodePassword = FocusNode();
-
   bool _obscureTextPassword = true;
   @override
   void initState() {
-    // TODO: implement initState
-    
     super.initState();
   }
   @override
   void dispose() {
-    focusNodeEmail.dispose();
-    focusNodePassword.dispose();
+  loginEmailController.dispose() ;  
+  loginPasswordController.dispose() ;  
     super.dispose();
   }
 
@@ -55,8 +47,6 @@ class _SignInState extends State<SignIn> {
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
-                       
-                          focusNode: focusNodeEmail,
                           controller: loginEmailController,
                           keyboardType: TextInputType.emailAddress,
                           style: const TextStyle(
@@ -71,9 +61,7 @@ class _SignInState extends State<SignIn> {
                             hintText: 'Email Address',
                             hintStyle: TextStyle(fontSize: 17.0),
                           ),
-                          onSubmitted: (_) {
-                            focusNodePassword.requestFocus();
-                          },
+                         
                         ),
                       ),
                       Container(
@@ -85,7 +73,6 @@ class _SignInState extends State<SignIn> {
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
-                          focusNode: focusNodePassword,
                           controller: loginPasswordController,
                           obscureText: _obscureTextPassword,
                           style: const TextStyle(

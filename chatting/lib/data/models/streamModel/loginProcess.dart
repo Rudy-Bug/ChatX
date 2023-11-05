@@ -17,8 +17,12 @@ class ProcessLogin {
     yield* _controllerProcessLogin.stream ;   
   }
 
-  void  LoginProcess(){
+  void  loginProcess(){
     _controllerProcessLogin.add(ProcessLoginStatus.login) ;
+  }
+
+  void forgotPasswordProcess() {
+    _controllerProcessLogin.add(ProcessLoginStatus.forgot); 
   }
 
   void dispose() {
