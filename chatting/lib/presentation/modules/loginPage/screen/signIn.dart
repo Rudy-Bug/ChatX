@@ -127,67 +127,71 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
               ),
-              Container(
-                  margin: const EdgeInsets.only(top: 170.0),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color: AppColors.blueLight_01,
-                        offset: Offset(1.0, 3.0),
-                        blurRadius: 8.0,
-                      ),
-                      BoxShadow(
-                        color: AppColors.whiteMint_21,
-                        offset: Offset(1.0, 3.0),
-                        blurRadius: 8.0,
-                      ),
-                    ],
-                    gradient: LinearGradient(
-                        colors: <Color>[
-                          AppColors.blueLight_01,
-                          AppColors.whiteMint_21
-                        ],
-                        begin: FractionalOffset(0.2, 0.2),
-                        end: FractionalOffset(1.0, 1.0),
-                        stops: <double>[0.0, 1.0],
-                        tileMode: TileMode.clamp),
-                  ),
-                  child: BlocBuilder<LoginBloc, LoginState>(
-                    builder: (context, state) {
-                      if (state.status.isFailure) {
-                        Fluttertoast.showToast(
-                            msg: "Password wrong:D",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.BOTTOM,
-                            timeInSecForIosWeb: 1,
-                            backgroundColor: AppColors.snackBarColors,
-                            textColor: AppColors.white,
-                            fontSize: 16.0); 
-                      }
-                      return MaterialButton(
-                        highlightColor: Colors.transparent,
-                        splashColor:   AppColors.whiteMint_21 ,
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 42.0),
-                          child: Text(
-                            'LOGIN',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: 25.0,
-                            ),
+              BlocBuilder<LoginBloc, LoginState>(
+                builder: (context, state) {
+                  if (state.status.isFailure) {
+                    Fluttertoast.showToast(
+                        msg: "Password wrong:D",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: AppColors.snackBarColors,
+                        textColor: AppColors.white,
+                        fontSize: 16.0);
+                  }
+                  return Container(
+                    margin: const EdgeInsets.only(top: 170.0),
+                    decoration:  BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color:state.isValid ? AppColors.blueLight_01 : AppColors.grey_001 ,
+                          offset: const Offset(1.0, 3.0),
+                          blurRadius: 8.0,
+                        ),
+                        BoxShadow(
+                          color:state.isValid ? AppColors.whiteMint_21 : AppColors.grey_002,
+                          offset:const Offset(1.0, 3.0),
+                          blurRadius: 8.0,
+                        ),
+                      ],
+                      gradient: LinearGradient(
+                          colors: state.isValid ? <Color>[
+                            AppColors.blueLight_01,
+                            AppColors.whiteMint_21
+                          ] : <Color>[
+                            AppColors.grey_001,
+                            AppColors.grey_002
+                          ] ,
+                          begin:const FractionalOffset(0.8, 0.2),
+                          end: const FractionalOffset(1.0, 2),
+                          stops: const <double>[0.0, 1.0],
+                          tileMode: TileMode.clamp),
+                    ),
+                    child: MaterialButton(
+                      highlightColor: Colors.transparent,
+                      splashColor: state.isValid ? AppColors.whiteMint_21 : null ,
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 42.0),
+                        child: Text(
+                          'LOGIN',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: 25.0,
                           ),
                         ),
-                        onPressed: () {
-                          context.read<LoginBloc>().add(OnSubmitted(
-                              cl1: loginEmailController,
-                              cl2: loginPasswordController));
-                        },
-                      );
-                    },
-                  ))
+                      ),
+                      onPressed: () {
+                        context.read<LoginBloc>().add(OnSubmitted(
+                            cl1: loginEmailController,
+                            cl2: loginPasswordController));
+                      },
+                    ),
+                  );
+                },
+              )
             ],
           ),
           Padding(
