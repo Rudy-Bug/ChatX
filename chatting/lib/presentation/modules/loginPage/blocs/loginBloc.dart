@@ -29,7 +29,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthenticationRes _authenRes;
   final ProcessLogin _loginProcess;
   final UserService userService;
- late StreamSubscription<AuthenticationStatus> _controller;
   void _onEmailChanged(OnEmailInputEvent event, Emitter<LoginState> emit) {
     var email = event.email;
     emit(state.copyWith(
@@ -57,11 +56,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Future<void> _onSubmitted(OnSubmitted event, Emitter<LoginState> emit) async {
+
     if (state.isValid) {
 
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
-      try {
+
 
         ReponseModel userDevice =
             await userService.signIn(event.cl1.text, event.cl2.text);
@@ -70,20 +70,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         print("Status code: ${value}");  
         if (value == 200) {
           emit(state.copyWith(status: FormzSubmissionStatus.success));
-        print("Status code: ${value}");  
-          _authenRes.login() ;  
-
-        print("Status code: ${value}");  
+            _authenRes.login() ; 
 
         }
         if (value == 404) {
           emit(state.copyWith(
               status: FormzSubmissionStatus.failure, isValid: false));
+              event.cl1.clear() ;  
+              event.cl2.clear() ;  
         }
-      } catch (_) {
-        emit(state.copyWith(
-            status: FormzSubmissionStatus.failure, isValid: false));
-      }
+      } 
     } 
-  }
+  
 }

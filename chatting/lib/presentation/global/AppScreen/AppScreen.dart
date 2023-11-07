@@ -28,9 +28,10 @@ class _AppScreen extends State<AppScreen>{
           case AuthenticationStatus.unknown:
           break ; 
           case AuthenticationStatus.unauthenticated:
-          Get.offAndToNamed( Routes.login) ; 
+          Get.toNamed( Routes.login) ; 
           break ; // dispose all page before stack :v
           case AuthenticationStatus.authenticated:
+          Get.toNamed(Routes.loading) ; 
           print("Hello world?") ; 
           break ;  
         }

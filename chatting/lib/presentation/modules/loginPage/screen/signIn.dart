@@ -4,7 +4,10 @@ import 'package:chatting/presentation/modules/loginPage/blocs/loginEvent.dart';
 import 'package:chatting/presentation/modules/loginPage/blocs/loginState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:formz/formz.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -151,22 +154,20 @@ class _SignInState extends State<SignIn> {
                         tileMode: TileMode.clamp),
                   ),
                   child: BlocBuilder<LoginBloc, LoginState>(
-                    
                     builder: (context, state) {
-                      if (state.status.isInProgress) {
-                        Container(
-                            padding:const EdgeInsets.all(20),
-                            child:const Center(
-                                child: SizedBox(
-                                    height: 30,
-                                    width: 30,
-                                    child: CircularProgressIndicator(
-                                      color: AppColors.blueLight_02,
-                                    ))));
+                      if (state.status.isFailure) {
+                        Fluttertoast.showToast(
+                            msg: "Password wrong:D",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: AppColors.snackBarColors,
+                            textColor: AppColors.white,
+                            fontSize: 16.0); 
                       }
                       return MaterialButton(
                         highlightColor: Colors.transparent,
-                        splashColor: AppColors.whiteMint_21,
+                        splashColor:   AppColors.whiteMint_21 ,
                         child: const Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 42.0),

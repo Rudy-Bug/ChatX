@@ -5,7 +5,7 @@ class LoadingScreen extends StatelessWidget {
   const LoadingScreen({super.key});
 
   static Route<void> route() {
-    return MaterialPageRoute<void>(builder: (_) => LoadingScreen());
+    return MaterialPageRoute<void>(builder: (_) => const LoadingScreen());
   }
 
   @override

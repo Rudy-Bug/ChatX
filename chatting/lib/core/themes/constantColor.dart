@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 
 class AppColors{
   static const Color greenLight_01 =  Color.fromARGB(255, 73, 219, 132) ;  
+  static const Color white =  Color.fromARGB(255, 250, 250, 250) ;  
   static const Color blueLight_01 =  Color.fromARGB(255, 114, 179, 211) ;  
   static const Color blueLight_02  =  Color.fromARGB(255, 33, 136, 187) ;  
   static const Color whitePupble =  Color.fromARGB(255, 202, 191, 212) ; 
@@ -17,6 +18,7 @@ class AppColors{
   static const Color grey_001 =  Color.fromARGB(255, 60, 72, 72)  ;
   static const Color black_001 =  Color.fromARGB(255, 24, 26, 26)  ;
   static const Color mintBlue_001 =   Color.fromARGB(255, 163, 247, 247)  ;
+  static const Color snackBarColors =   Color.fromARGB(100, 50, 54, 54)  ;
 
 
    static  LinearGradient linearStandard = const LinearGradient(

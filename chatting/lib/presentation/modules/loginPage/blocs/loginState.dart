@@ -18,6 +18,7 @@ class LoginState extends Equatable {
   final bool isValid;
 
   LoginState resetFailure() {
+    print("Into here? "); 
     return LoginState(
         status: FormzSubmissionStatus.success,
         email: email,
