@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/gestures.dart';
 import 'package:formz/formz.dart';
 
 class LoginState extends Equatable {
@@ -7,7 +6,7 @@ class LoginState extends Equatable {
   List<Object?> get props => [email, password, status];
 
   const LoginState(
-      {this.email = "",
+      {this.email = "" ,
       this.password = "",
       this.isValid = false,
       this.status = FormzSubmissionStatus.initial});
@@ -18,9 +17,9 @@ class LoginState extends Equatable {
   final bool isValid;
 
   LoginState resetFailure() {
-    print("Into here? "); 
+    print("Will Into here? "); 
     return LoginState(
-        status: FormzSubmissionStatus.success,
+        status: FormzSubmissionStatus.initial,
         email: email,
         password: password,
         isValid: isValid);

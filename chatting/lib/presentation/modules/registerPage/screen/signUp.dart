@@ -20,8 +20,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController signupEmailController = TextEditingController();
   TextEditingController signupNameController = TextEditingController();
   TextEditingController signupPasswordController = TextEditingController();
-  TextEditingController signupConfirmPasswordController =
-      TextEditingController();
+  TextEditingController signupConfirmPasswordController = TextEditingController();
 
   @override
   void dispose() {

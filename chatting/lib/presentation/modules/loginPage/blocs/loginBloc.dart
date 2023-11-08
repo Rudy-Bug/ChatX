@@ -5,11 +5,11 @@ import 'package:chatting/data/models/streamModel/authenticate.dart';
 import 'package:chatting/data/models/streamModel/loginProcess.dart';
 import 'package:chatting/data/repository/userRepoImplement.dart';
 
-
 import 'package:chatting/presentation/modules/loginPage/blocs/loginEvent.dart';
 import 'package:chatting/presentation/modules/loginPage/blocs/loginState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:get/get.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc(
@@ -23,7 +23,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<OnPasswordInputEvent>(_onPasswordChanged);
     on<OnForgotPasswordEvent>(_onForgotPassword);
     on<OnSubmitted>(_onSubmitted);
-    
   }
 
   final AuthenticationRes _authenRes;
@@ -45,7 +44,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         email: "",
         password: ""));
   }
-  
 
   void _onPasswordChanged(
       OnPasswordInputEvent event, Emitter<LoginState> emit) {
@@ -56,30 +54,27 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Future<void> _onSubmitted(OnSubmitted event, Emitter<LoginState> emit) async {
-
     if (state.isValid) {
-
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+      ReponseModel userDevice;
+    
+       userDevice = await userService.signIn(event.cl1.text, event.cl2.text);
 
-
-
-        ReponseModel userDevice =
-            await userService.signIn(event.cl1.text, event.cl2.text);
- 
-        int value = userDevice.statusCode;
-        print("Status code: ${value}");  
-        if (value == 200) {
-          emit(state.copyWith(status: FormzSubmissionStatus.success));
-            _authenRes.login() ; 
-
-        }
-        if (value == 404) {
-          emit(state.copyWith(
-              status: FormzSubmissionStatus.failure, isValid: false));
-              event.cl1.clear() ;  
-              event.cl2.clear() ;  
-        }
-      } 
-    } 
-  
+      int value = userDevice.statusCode;
+      print("Status code: ${value}");
+      if (value == 200) {
+        emit(state.copyWith(status: FormzSubmissionStatus.success));
+        _authenRes.login();
+      }
+      if (value == 404) {
+        emit(state.copyWith(
+            status: FormzSubmissionStatus.failure, isValid: false));
+        event.cl1.clear();
+        event.cl2.clear();
+        Future.delayed(Duration(microseconds: 500), () {
+              state.resetFailure() ;  
+        });
+      }
+    }
+  }
 }

@@ -10,7 +10,8 @@ class UserService extends UserRepositories{
   @override
   Future<ReponseModel> signIn(String email, String password) async {
       final reponse = await _service.getUser(email: email, password: password);  
-      print(reponse);   
+         await  Future.delayed(const Duration(seconds: 1) ,  (){
+      } );
       return reponse  ;  
   }
 
@@ -21,8 +22,9 @@ class UserService extends UserRepositories{
 
   @override
   Future<ReponseModel> registeringUser(User user) async {
-
-    throw UnimplementedError();
+    final reponse = await _service.registerAccount(user:user) ;
+      await Future.delayed(const Duration(microseconds: 500)); 
+      return reponse ;  
   }
 
   @override

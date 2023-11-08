@@ -1,6 +1,8 @@
 import 'package:chatting/core/routes/routes.dart';
+import 'package:chatting/data/models/streamModel/authenticate.dart';
 import 'package:chatting/data/models/streamModel/loginProcess.dart';
 import 'package:chatting/presentation/global/AppScreen/loadingScreen.dart';
+import 'package:chatting/presentation/modules/loginPage/blocs/loginBloc.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessBloc.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessState.dart';
 import 'package:chatting/presentation/modules/loginScreen/widgets/backGroundWidget.dart';
@@ -35,7 +37,6 @@ class _LoginScreen extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     /*
      return   Scaffold(
       resizeToAvoidBottomInset: true,
@@ -50,39 +51,51 @@ class _LoginScreen extends State<LoginScreen> {
     return RepositoryProvider.value(
       value: _processLoginValue,
       child: BlocProvider(
-        create: (context) => LoginProcessBloc(processLogin: _processLoginValue),
-        child: MaterialApp(
-          builder: (context, child) {
-            return BlocListener<LoginProcessBloc, ProcessLoginState>(
-              listener: (context, state) {
-                switch (state.status) {
-                  case ProcessLoginStatus.login:
-                  print("into here login?") ;
-                  
-                  // Get.toNamed(Routes.loading) ;  
-                    break;
-                  case ProcessLoginStatus.forgot:
-                    break;
-                  case ProcessLoginStatus.registering:
-                  print("into here registering?") ;
-                    break;
-                  case ProcessLoginStatus.renewPass:
-                    break;
-                }
+          create: (context) =>
+              LoginProcessBloc(processLogin: _processLoginValue),
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(create: ((context) {
+                return LoginBloc(
+                    authenticationRes:
+                        RepositoryProvider.of<AuthenticationRes>(context),
+                    loginProcessBloc:
+                        RepositoryProvider.of<ProcessLogin>(context));
+              })),
+            ],
+            child: MaterialApp(
+              builder: (context, child) {
+                return BlocListener<LoginProcessBloc, ProcessLoginState>(
+                  listener: (context, state) {
+                    switch (state.status) {
+                      case ProcessLoginStatus.login:
+                        
+                        print("into here login?");
+
+                        // Get.toNamed(Routes.loading) ;
+                        break;
+                      case ProcessLoginStatus.forgot:
+                        break;
+                      case ProcessLoginStatus.registering:
+                        print("Into registing?");
+                        break;
+                      case ProcessLoginStatus.renewPass:
+                        break;
+                    }
+                  },
+                  child: const Scaffold(
+                    resizeToAvoidBottomInset: true,
+                    backgroundColor: Colors.white,
+                    body: Stack(children: [
+                      BackGround_widget(),
+                      LoginTemPlate_Widget(),
+                    ]),
+                  ),
+                );
               },
-              child: const Scaffold(
-                resizeToAvoidBottomInset: true,
-                backgroundColor: Colors.white,
-                body: Stack(children: [
-                  BackGround_widget(),
-                  LoginTemPlate_Widget(),
-                ]),
-              ), 
-            );
-          },
-          onGenerateRoute: (settings) => LoadingScreen.route(),
-        ),
-      ),
+              onGenerateRoute: (settings) => LoadingScreen.route(),
+            ),
+          )),
     );
   }
 }

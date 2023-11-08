@@ -25,6 +25,10 @@ class ProcessLogin {
     _controllerProcessLogin.add(ProcessLoginStatus.forgot); 
   }
 
+  void registeringProcess() {
+    _controllerProcessLogin.add(ProcessLoginStatus.registering); 
+  }
+
   void dispose() {
     _controllerProcessLogin.close() ;   
   }

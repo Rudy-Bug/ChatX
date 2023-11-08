@@ -3,7 +3,7 @@ import 'package:chatting/data/models/streamModel/loginProcess.dart';
 import 'package:chatting/presentation/modules/loginPage/blocs/loginBloc.dart';
 import 'package:chatting/presentation/modules/loginPage/blocs/loginState.dart';
 import 'package:chatting/presentation/modules/loginPage/screen/signIn.dart';
-import 'package:chatting/presentation/modules/forgotPassPage/screen/signUp.dart';
+import 'package:chatting/presentation/modules/registerPage/screen/signUp.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessBloc.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessEvent.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessState.dart';
@@ -46,16 +46,7 @@ class _LoginTemPlate_Widget extends State<LoginTemPlate_Widget>
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-        providers: [
-          BlocProvider(create: ((context) {
-            return LoginBloc(
-                authenticationRes:
-                    RepositoryProvider.of<AuthenticationRes>(context),
-                loginProcessBloc: RepositoryProvider.of<ProcessLogin>(context));
-          })),
-        ],
-        child: Scaffold(
+    return Scaffold(
             resizeToAvoidBottomInset: true,
             backgroundColor: Colors.transparent,
             body: SizedBox(
@@ -108,6 +99,11 @@ class _LoginTemPlate_Widget extends State<LoginTemPlate_Widget>
                     ))
                   ],
                 )),
-          ),);
+          ) ;  
   }
 }
+
+/*
+ 
+
+*/
