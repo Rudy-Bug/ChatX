@@ -5,10 +5,12 @@ import 'package:dio/dio.dart';
 class CallAPI {
   final dio = Dio(BaseOptions(
       contentType: Headers.jsonContentType,
-      baseUrl: 'http://localhost:8080/api',
+      baseUrl: 'http://192.168.1.4:8080/api',
       connectTimeout: const Duration(seconds: 5),
       receiveTimeout: const Duration(seconds: 3)));
+  // ifconfig en0 | grep inet ==> Tìm ip của macOs
   String domain = 'http://localhost:8080/api';
+  String domain2 = 'http://192.168.1.4:8080/api';
   final url = "http://localhost:8080/api/user/signUp"; // anotation
 
   void configureDio() {
@@ -23,11 +25,14 @@ class CallAPI {
     User userDevice = User();
     print("Into here? Get User?");
     try {
+      print("Into here sir? ");
+      print("Password: $password");
+      print("Password: $email");
       final response = await dio.get(
         '/user/loginUser',
         data: {'Email': email, 'Password': password},
       );
-
+      print("crash here ? ");
       if (response.statusCode == 200) {
         final data = response.data["data"]["data"];
         userDevice.name = data["Name"];
@@ -46,6 +51,7 @@ class CallAPI {
             message: e.response?.data["message"],
             statusCode: e.response?.statusCode as int);
       } else {
+        print("========== > catch Exception: ${e.response?.data["message"]}");
         return ReponseModel(
             model: null, message: "Something went wrong? ", statusCode: 500);
       }
@@ -86,6 +92,9 @@ class CallAPI {
 
   Future<ReponseModel> registerAccount({User? user}) async {
     try {
+      await Future.delayed(
+        const Duration(microseconds: 1000),
+      );
       final response = await dio.post(
         '/user/signUp',
         data: {

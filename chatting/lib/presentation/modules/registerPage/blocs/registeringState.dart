@@ -19,7 +19,7 @@ class RegisteringState extends Equatable {
   final String mess;
   final FormzSubmissionStatus status;
   @override
-  List<Object?> get props => [name, email, password, passwordConfirm];
+  List<Object?> get props => [name, email, password, passwordConfirm , status ];
 
   RegisteringState copyWith(
       {String? name,

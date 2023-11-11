@@ -34,6 +34,7 @@ class _LoginTemPlate_Widget extends State<LoginTemPlate_Widget>
     context
         .read<LoginProcessBloc>()
         .add(StatusChangedLoginProcess(ProcessLoginStatus.login));
+    LoginProcessBloc.pageController =  _pageController ;  
 
     super.initState();
   }

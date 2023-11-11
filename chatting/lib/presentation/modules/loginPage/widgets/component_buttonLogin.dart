@@ -71,7 +71,6 @@ class ComponentButtonLogn extends StatelessWidget {
                         : const Text(
                             'LOGIN',
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
                               color: Colors.white,
                               fontSize: 25.0,
                             ),

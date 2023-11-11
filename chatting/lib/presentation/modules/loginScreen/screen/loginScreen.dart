@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:chatting/core/routes/routes.dart';
 import 'package:chatting/data/models/streamModel/authenticate.dart';
 import 'package:chatting/data/models/streamModel/loginProcess.dart';
@@ -7,6 +9,7 @@ import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessBloc
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessState.dart';
 import 'package:chatting/presentation/modules/loginScreen/widgets/backGroundWidget.dart';
 import 'package:chatting/presentation/modules/loginScreen/widgets/loginTemplateWidget.dart';
+import 'package:chatting/presentation/modules/registerPage/blocs/registeringBloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -62,6 +65,10 @@ class _LoginScreen extends State<LoginScreen> {
                     loginProcessBloc:
                         RepositoryProvider.of<ProcessLogin>(context));
               })),
+              BlocProvider(create: ((context) {
+                return RegisteringBloc(
+                    processLogin: RepositoryProvider.of<ProcessLogin>(context));
+              })),
             ],
             child: MaterialApp(
               builder: (context, child) {
@@ -69,15 +76,18 @@ class _LoginScreen extends State<LoginScreen> {
                   listener: (context, state) {
                     switch (state.status) {
                       case ProcessLoginStatus.login:
-                        
-                        print("into here login?");
-
+                        if (LoginProcessBloc.pageController != null) {
+                          LoginProcessBloc.pageController.animateToPage(0,
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.decelerate);
+                        }
                         // Get.toNamed(Routes.loading) ;
                         break;
                       case ProcessLoginStatus.forgot:
                         break;
                       case ProcessLoginStatus.registering:
                         print("Into registing?");
+
                         break;
                       case ProcessLoginStatus.renewPass:
                         break;

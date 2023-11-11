@@ -32,7 +32,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 23.0),
-      child: Column(
+      child: ListView(
         children: [
           Stack(
             alignment: Alignment.topCenter,

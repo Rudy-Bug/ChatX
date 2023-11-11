@@ -22,7 +22,7 @@ class LoginProcessBloc extends Bloc<LoginProcesEvent, ProcessLoginState> {
     _controllerStreamLoginProcess.cancel();
     return super.close();
   }
-
+  static late final PageController pageController ;  
   Future<void> _onStatusChangedLoginProcess(
       StatusChangedLoginProcess event, Emitter<ProcessLoginState> emit) async {
           switch (event.status) {

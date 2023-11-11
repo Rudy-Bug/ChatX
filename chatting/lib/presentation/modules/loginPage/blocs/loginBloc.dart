@@ -57,9 +57,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (state.isValid) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
       ReponseModel userDevice;
-    
+      print("Into here on top User Device?"); 
        userDevice = await userService.signIn(event.cl1.text, event.cl2.text);
-
+        print("Goto under userDevice!") ; 
       int value = userDevice.statusCode;
       print("Status code: ${value}");
       if (value == 200) {

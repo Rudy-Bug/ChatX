@@ -10,8 +10,6 @@ class ForgotPasswordState extends Equatable{
     this.status = FormzSubmissionStatus.initial,
     this.isValid = false,
   }) ; 
-
-
     final String mess;  
   final String account; // username!
   final String number;
@@ -19,7 +17,6 @@ class ForgotPasswordState extends Equatable{
   final bool isValid;
   
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 
 
