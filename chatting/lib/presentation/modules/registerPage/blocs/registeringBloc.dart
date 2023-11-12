@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 class RegisteringBloc extends Bloc<RegisteringEvent, RegisteringState> {
-  RegisteringBloc({required ProcessLogin processLogin})
+  RegisteringBloc({required ProcessLogin processLogin}) // nhớ clear hết controller nếu không dùng tới :v
       : _processLogin = processLogin,
         userService = UserService(),
         super(const RegisteringState()) {

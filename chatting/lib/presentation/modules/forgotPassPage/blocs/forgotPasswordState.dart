@@ -6,6 +6,7 @@ class ForgotPasswordState extends Equatable {
     this.mess = '',
     this.email = '',
     this.codeMock = '',
+    this.newPasswordConfirm = '',
     this.status = FormzSubmissionStatus.initial,
     this.isValid = false,
     this.isInputCode = false,
@@ -18,15 +19,16 @@ class ForgotPasswordState extends Equatable {
   final bool isInputCode;
   final bool isRenewpassword;
   final String codeMock;
+  final String newPasswordConfirm;
 
   ForgotPasswordState copyWith(
       {String? email,
       bool? isValid,
       bool? isInputCode,
       bool? isRenewpassword,
+      String? newPasswordConfirm,
       String? codeMock,
       FormzSubmissionStatus? status,
-      String? passwordConfirm,
       String? mess}) {
     return ForgotPasswordState(
       status: status ?? this.status,
@@ -35,6 +37,7 @@ class ForgotPasswordState extends Equatable {
       isRenewpassword: isRenewpassword ?? this.isRenewpassword,
       isInputCode: isInputCode ?? this.isInputCode,
       codeMock: codeMock ?? this.codeMock,
+      newPasswordConfirm: newPasswordConfirm ?? this.newPasswordConfirm,
     );
   }
 
@@ -45,9 +48,20 @@ class ForgotPasswordState extends Equatable {
       isValid: false,
       mess: "",
       codeMock: "",
+      newPasswordConfirm: "",
+      isInputCode: false,
+      isRenewpassword: false,
     );
   }
 
   @override
-  List<Object?> get props => [status, email, codeMock];
+  List<Object?> get props => [
+        status,
+        email,
+        codeMock,
+        newPasswordConfirm,
+        isValid,
+        isRenewpassword,
+        isInputCode
+      ];
 }

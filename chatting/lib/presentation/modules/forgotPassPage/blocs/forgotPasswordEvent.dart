@@ -30,13 +30,36 @@ class OnSubmittedEmail extends ForgotPasswordEvent {
   }
 }
 
-class OnCancelForgotPassword extends ForgotPasswordEvent {}
 
 class OnConfirmCode extends ForgotPasswordEvent {
-  OnConfirmCode({required this.confirmTextController});
-  final TextEditingController confirmTextController;
+  OnConfirmCode({required this.confirmCodeTextController ,  required this.confirmNewPasswordTextController});
+  final TextEditingController confirmCodeTextController;
+  final TextEditingController confirmNewPasswordTextController;
 
   void removeText() {
-    confirmTextController.clear();
+    confirmCodeTextController.clear();
+    confirmNewPasswordTextController.clear();
   }
 }
+
+class OnInputNewPassword  extends ForgotPasswordEvent{
+  final String newPassword ;  
+  OnInputNewPassword({required this.newPassword});  
+  @override
+  List<Object?> get props => [newPassword];
+}
+
+
+class OnSubbmitedNewPassword extends ForgotPasswordEvent {
+  final TextEditingController newPasswordTextController ;
+
+  OnSubbmitedNewPassword({required this.newPasswordTextController});
+
+  void removeText(){
+    newPasswordTextController.clear() ; 
+  }
+
+}
+
+class OnCancelForgotPassword extends ForgotPasswordEvent {}
+

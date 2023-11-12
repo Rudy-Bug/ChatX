@@ -1,37 +1,11 @@
 import 'package:chatting/core/themes/constantColor.dart';
-import 'package:chatting/presentation/modules/forgotPassPage/widgets/component_forgotPasswordCodeConfirm.dart';
-import 'package:chatting/presentation/modules/forgotPassPage/widgets/component_forgotPasswordEmail.dart';
 import 'package:flutter/material.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
-  ForgotPasswordPage({super.key});
-
-  final PageController _pageController = PageController();
-  double _scale = 1.2;
+class ComponentForgotPasswordCodeConfirm extends StatelessWidget {
+  const ComponentForgotPasswordCodeConfirm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      width: MediaQuery.of(context).size.width,
-      height: 350 * _scale,
-      duration: const Duration(milliseconds: 600),
-      curve: Curves.ease,
-      child: PageView(
-        controller: _pageController,
-        onPageChanged: (index) {
-          print("On change?");
-          _scale = index == 0 ? 0.8 : 1.2;
-          print("He so: $_scale");
-        },
-        children:const [
-                ComponentForgotPasswordEmail() , 
-           ComponentForgotPasswordCodeConfirm(), 
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPage1(BuildContext context) {
     return Container(
         color: Colors.white,
         child: Container(
@@ -41,7 +15,14 @@ class ForgotPasswordPage extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             children: [
               const Text(
-                "Did you forgot password?",
+                "Alright!",
+                style: TextStyle(
+                    fontSize: 23,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+              ),
+              const Text(
+                "Type code and new password!",
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
@@ -54,13 +35,20 @@ class ForgotPasswordPage extends StatelessWidget {
                 margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                 child: TextField(
                   onChanged: (value) {},
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.email,
-                      size: 25,
-                    ),
-                    hintText: "Type your email",
-                  ),
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.code_sharp,
+                        size: 25,
+                      ),
+
+                      /*  
+                  icon send ,  
+                  icon check ,  
+                  loading
+              */
+                      hintText: "Type your code",
+                      suffixIcon:
+                          IconButton(onPressed: () {}, icon: Icon(Icons.send))),
                 ),
               ),
               Container(
@@ -98,6 +86,4 @@ class ForgotPasswordPage extends StatelessWidget {
           ),
         ));
   }
-
-  }
-
+}

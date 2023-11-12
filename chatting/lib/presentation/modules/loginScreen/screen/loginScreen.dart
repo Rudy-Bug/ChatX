@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
-import 'package:chatting/core/routes/routes.dart';
 import 'package:chatting/data/models/streamModel/authenticate.dart';
 import 'package:chatting/data/models/streamModel/loginProcess.dart';
 import 'package:chatting/presentation/global/AppScreen/loadingScreen.dart';
+import 'package:chatting/presentation/modules/forgotPassPage/blocs/forgotPasswordBloc.dart';
 import 'package:chatting/presentation/modules/forgotPassPage/screen/forgotPage.dart';
 import 'package:chatting/presentation/modules/loginPage/blocs/loginBloc.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessBloc.dart';
@@ -13,7 +11,6 @@ import 'package:chatting/presentation/modules/loginScreen/widgets/loginTemplateW
 import 'package:chatting/presentation/modules/registerPage/blocs/registeringBloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -70,6 +67,10 @@ class _LoginScreen extends State<LoginScreen> {
                 return RegisteringBloc(
                     processLogin: RepositoryProvider.of<ProcessLogin>(context));
               })),
+              BlocProvider(create: ((context) {
+                return ForgotPasswordBloc(
+                    processLogin: RepositoryProvider.of<ProcessLogin>(context));
+              })),
             ],
             child: MaterialApp(
               builder: (context, child) {
@@ -85,10 +86,16 @@ class _LoginScreen extends State<LoginScreen> {
                         // Get.toNamed(Routes.loading) ;
                         break;
                       case ProcessLoginStatus.forgot:
-                      print("I forgot password?"); 
-                        showModalBottomSheet(context: context, builder:(context) {
-                            return ForgotPasswordPage() ; 
-                        },) ;  
+                        print("I forgot password?");
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context2) {
+                            return BlocProvider.value( // fixed
+                                value: BlocProvider.of<ForgotPasswordBloc>(
+                                    context),
+                                child: ForgotPasswordPage());
+                          },
+                        );
                         break;
                       case ProcessLoginStatus.registering:
                         print("Into registing?");
