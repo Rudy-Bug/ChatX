@@ -23,11 +23,7 @@ class CallAPI {
 
   Future<ReponseModel> getUser({String? email, String? password}) async {
     User userDevice = User();
-    print("Into here? Get User?");
     try {
-      print("Into here sir? ");
-      print("Password: $password");
-      print("Password: $email");
       final response = await dio.get(
         '/user/loginUser',
         data: {'Email': email, 'Password': password},
@@ -89,6 +85,36 @@ class CallAPI {
   }
 
   */
+
+
+  Future<ReponseModel> forgotPassword({User? user}) async {
+   try {
+      await Future.delayed(
+        const Duration(microseconds: 1000),
+      );
+      final response = await dio.post(
+        '/user/forgotPassword',
+        data: {
+          'Email': user?.email,
+        },
+      );
+      return ReponseModel(
+          model: true ,
+          message: response.data["message"],
+          statusCode: response.statusCode as int);
+    } on DioException catch (e) {
+      print("Into dioException ForgotPassword ?>");
+      if (e.response?.statusCode == 404) {
+        return ReponseModel(
+            model: false,
+            message: e.response?.data["message"],
+            statusCode: e.response?.statusCode as int);
+      } else {
+        return ReponseModel(
+            model: false, message: "Something went wrong? ", statusCode: 500);
+      }
+    }
+  }
 
   Future<ReponseModel> registerAccount({User? user}) async {
     try {

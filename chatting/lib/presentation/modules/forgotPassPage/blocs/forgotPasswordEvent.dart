@@ -1,38 +1,42 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
-abstract class ForgotPasswordEvent extends Equatable{
+abstract class ForgotPasswordEvent extends Equatable {
   @override
   List<Object?> get props => [];
 }
 
-class OnInputYourName extends ForgotPasswordEvent {
-  OnInputYourName({required this.name}) ; 
-  final String name ;   
+class OnInputCodeMock extends ForgotPasswordEvent {
+  OnInputCodeMock({required this.codeMock});
+  final String codeMock;
   @override
-  List<Object?> get props => [name];
+  List<Object?> get props => [codeMock];
 }
 
 class OnInputYourEmail extends ForgotPasswordEvent {
-  OnInputYourEmail({required this.email}) ;  
+  OnInputYourEmail({required this.email});
 
-   final String email ;  
-   @override
-  List<Object?> get props => [email]; 
+  final String email;
+  @override
+  List<Object?> get props => [email];
 }
 
-class OnInputPassword extends ForgotPasswordEvent{
-    OnInputPassword({required this.password}) ;  
+class OnSubmittedEmail extends ForgotPasswordEvent {
+  OnSubmittedEmail({required this.emailController});
+  final TextEditingController emailController;
 
-   final String password ;  
-   @override
-  List<Object?> get props => [password]; 
+  void removeText() {
+    emailController.clear();
+  }
 }
 
+class OnCancelForgotPassword extends ForgotPasswordEvent {}
 
-class OnInputPasswordConfirm extends ForgotPasswordEvent{
-    OnInputPasswordConfirm({required this.passwordConfirm}) ;  
+class OnConfirmCode extends ForgotPasswordEvent {
+  OnConfirmCode({required this.confirmTextController});
+  final TextEditingController confirmTextController;
 
-   final String passwordConfirm ;  
-   @override
-  List<Object?> get props => [passwordConfirm]; 
+  void removeText() {
+    confirmTextController.clear();
+  }
 }

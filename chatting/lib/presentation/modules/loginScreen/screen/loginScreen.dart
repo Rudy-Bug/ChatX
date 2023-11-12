@@ -4,6 +4,7 @@ import 'package:chatting/core/routes/routes.dart';
 import 'package:chatting/data/models/streamModel/authenticate.dart';
 import 'package:chatting/data/models/streamModel/loginProcess.dart';
 import 'package:chatting/presentation/global/AppScreen/loadingScreen.dart';
+import 'package:chatting/presentation/modules/forgotPassPage/screen/forgotPage.dart';
 import 'package:chatting/presentation/modules/loginPage/blocs/loginBloc.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessBloc.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessState.dart';
@@ -84,6 +85,10 @@ class _LoginScreen extends State<LoginScreen> {
                         // Get.toNamed(Routes.loading) ;
                         break;
                       case ProcessLoginStatus.forgot:
+                      print("I forgot password?"); 
+                        showModalBottomSheet(context: context, builder:(context) {
+                            return ForgotPasswordPage() ; 
+                        },) ;  
                         break;
                       case ProcessLoginStatus.registering:
                         print("Into registing?");

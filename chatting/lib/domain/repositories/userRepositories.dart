@@ -8,7 +8,7 @@ abstract class UserRepositories {
 
       Future<ReponseModel> registeringUser(User user) ;  
 
-      Future<ReponseModel> getPassword(String email) ;  
+      Future<ReponseModel> getPassword(String password) ;  
 
       Future<ReponseModel> renewPassword(String password, String confirmPassword) ;
 

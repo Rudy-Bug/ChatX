@@ -37,12 +37,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   void _onForgotPassword(
       OnForgotPasswordEvent event, Emitter<LoginState> emit) {
-    _loginProcess.forgotPasswordProcess();
     emit(state.copyWith(
         status: FormzSubmissionStatus.initial,
         isValid: false,
         email: "",
         password: ""));
+    _loginProcess.forgotPasswordProcess();
+
   }
 
   void _onPasswordChanged(

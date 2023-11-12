@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:chatting/core/service/connectDatabase.dart';
 import 'package:chatting/data/models/model.dart';
 import 'package:chatting/domain/entities/user.dart';
 import 'package:chatting/domain/repositories/userRepositories.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserService extends UserRepositories{
 
@@ -18,7 +21,8 @@ class UserService extends UserRepositories{
 
   @override
   Future<ReponseModel> getPassword(String email) async {
-    throw UnimplementedError();
+      final reponse = await _service.forgotPassword(user: User(email: email));  
+      return reponse  ;  
   }
 
   @override
@@ -26,7 +30,7 @@ class UserService extends UserRepositories{
     final reponse = await _service.registerAccount(user:user) ;
       return reponse ;  
   }
-
+  
   @override
   Future<ReponseModel> renewPassword(String password, String confirmPassword) async {
 
