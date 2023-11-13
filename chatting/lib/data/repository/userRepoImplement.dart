@@ -32,8 +32,15 @@ class UserService extends UserRepositories{
   }
   
   @override
-  Future<ReponseModel> renewPassword(String password, String confirmPassword) async {
+  Future<ReponseModel>   renewPassword(String password, String confirmPassword) async {
 
     throw UnimplementedError();
+  }
+  
+  @override
+  Future<ReponseModel> changePassword(User user, String newPassword) async{
+
+  final reponse = await _service.changePassword(user:user , newPassword: newPassword ) ;
+      return reponse ; 
   }
 }

@@ -2,6 +2,7 @@ import 'package:chatting/data/models/streamModel/authenticate.dart';
 import 'package:chatting/data/models/streamModel/loginProcess.dart';
 import 'package:chatting/presentation/global/AppScreen/loadingScreen.dart';
 import 'package:chatting/presentation/modules/forgotPassPage/blocs/forgotPasswordBloc.dart';
+import 'package:chatting/presentation/modules/forgotPassPage/blocs/forgotPasswordState.dart';
 import 'package:chatting/presentation/modules/forgotPassPage/screen/forgotPage.dart';
 import 'package:chatting/presentation/modules/loginPage/blocs/loginBloc.dart';
 import 'package:chatting/presentation/modules/loginScreen/blocs/loginProcessBloc.dart';
@@ -78,6 +79,7 @@ class _LoginScreen extends State<LoginScreen> {
                   listener: (context, state) {
                     switch (state.status) {
                       case ProcessLoginStatus.login:
+                      print("Into here?, login?");
                         if (LoginProcessBloc.pageController != null) {
                           LoginProcessBloc.pageController.animateToPage(0,
                               duration: const Duration(milliseconds: 500),
@@ -86,14 +88,17 @@ class _LoginScreen extends State<LoginScreen> {
                         // Get.toNamed(Routes.loading) ;
                         break;
                       case ProcessLoginStatus.forgot:
-                        print("I forgot password?");
                         showModalBottomSheet(
+                          enableDrag: false,
+                          isDismissible: false,
                           context: context,
                           builder: (context2) {
-                            return BlocProvider.value( // fixed
-                                value: BlocProvider.of<ForgotPasswordBloc>(
-                                    context),
-                                child: ForgotPasswordPage());
+                            return BlocProvider.value(
+                                  // fixed
+                                  value: BlocProvider.of<ForgotPasswordBloc>(
+                                      context),
+                                  child: const ForgotPasswordPage() 
+                            );
                           },
                         );
                         break;

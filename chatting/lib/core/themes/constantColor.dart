@@ -10,6 +10,7 @@ class AppColors {
   static const Color blueLight_02 = Color.fromARGB(255, 33, 136, 187);
   static const Color whitePupble = Color.fromARGB(255, 202, 191, 212);
   static const Color blackKa = Color.fromARGB(255, 33, 6, 58);
+  static const Color blackTransfer = Color.fromARGB(80, 70, 65, 65);
   static const Color whiteGrey_01 = Color.fromARGB(255, 220, 217, 217);
   static const Color whiteBlue_21 = Color.fromARGB(255, 52, 138, 199);
   static const Color whiteMint_21 = Color.fromARGB(255, 14, 190, 190);

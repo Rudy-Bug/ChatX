@@ -10,6 +10,9 @@ abstract class UserRepositories {
 
       Future<ReponseModel> getPassword(String password) ;  
 
+      Future<ReponseModel> changePassword(User user, String newPassword) ;  
+      
+
       Future<ReponseModel> renewPassword(String password, String confirmPassword) ;
 
 

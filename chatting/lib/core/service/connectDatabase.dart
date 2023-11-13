@@ -5,12 +5,13 @@ import 'package:dio/dio.dart';
 class CallAPI {
   final dio = Dio(BaseOptions(
       contentType: Headers.jsonContentType,
-      baseUrl: 'http://192.168.1.4:8080/api',
+      baseUrl: 'http://10.169.128.154:8080/api',
       connectTimeout: const Duration(seconds: 5),
       receiveTimeout: const Duration(seconds: 3)));
   // ifconfig en0 | grep inet ==> Tìm ip của macOs
   String domain = 'http://localhost:8080/api';
   String domain2 = 'http://192.168.1.4:8080/api';
+  String domain3Cty = 'http://10.169.128.154:8080/api' ;
   final url = "http://localhost:8080/api/user/signUp"; // anotation
 
   void configureDio() {
@@ -21,8 +22,45 @@ class CallAPI {
     dio.options.receiveTimeout = const Duration(seconds: 3);
   }
 
+
+
+
+  Future<ReponseModel> changePassword({User? user , String? newPassword}) async {
+   try {
+      await Future.delayed(
+        const Duration(microseconds: 1000),
+      );
+      final response = await dio.patch(
+  
+        '/user/changePasswordWithoutHeaders',
+        data: {
+          'Email': user?.email,
+          'Password': user?.password,
+          'NewPassword': newPassword,
+        },
+      );
+      return ReponseModel(
+          model: true ,
+          message: response.data["message"],
+          statusCode: response.statusCode as int);
+    } on DioException catch (e) {
+      print("Into dioException ForgotPassword ?>");
+      if (e.response?.statusCode == 404) {
+      // print("Into ${e.response?.data["message"]}");
+        return ReponseModel(
+            model: false,
+            message: e.response?.data["message"],
+            statusCode: e.response?.statusCode as int);
+      } else {
+        return ReponseModel(
+            model: false, message: "Something went wrong? ", statusCode: 500);
+      }
+    }
+  }
+
   Future<ReponseModel> getUser({String? email, String? password}) async {
     User userDevice = User();
+
     try {
       final response = await dio.get(
         '/user/loginUser',
@@ -98,8 +136,9 @@ class CallAPI {
           'Email': user?.email,
         },
       );
+      // print("object: " +  response.data) ;  
       return ReponseModel(
-          model: true ,
+          model: response.data["data"]['data']['Password'] ,
           message: response.data["message"],
           statusCode: response.statusCode as int);
     } on DioException catch (e) {
@@ -134,7 +173,7 @@ class CallAPI {
           message: response.data["message"],
           statusCode: response.statusCode as int);
     } on DioException catch (e) {
-      print("Into dioException>");
+      print("Into dioException registering>");
       if (e.response?.statusCode == 404) {
         return ReponseModel(
             model: false,

@@ -32,14 +32,7 @@ class OnSubmittedEmail extends ForgotPasswordEvent {
 
 
 class OnConfirmCode extends ForgotPasswordEvent {
-  OnConfirmCode({required this.confirmCodeTextController ,  required this.confirmNewPasswordTextController});
-  final TextEditingController confirmCodeTextController;
-  final TextEditingController confirmNewPasswordTextController;
-
-  void removeText() {
-    confirmCodeTextController.clear();
-    confirmNewPasswordTextController.clear();
-  }
+  OnConfirmCode() ;  
 }
 
 class OnInputNewPassword  extends ForgotPasswordEvent{
@@ -51,13 +44,11 @@ class OnInputNewPassword  extends ForgotPasswordEvent{
 
 
 class OnSubbmitedNewPassword extends ForgotPasswordEvent {
-  final TextEditingController newPasswordTextController ;
 
-  OnSubbmitedNewPassword({required this.newPasswordTextController});
 
-  void removeText(){
-    newPasswordTextController.clear() ; 
-  }
+  OnSubbmitedNewPassword();
+
+
 
 }
 
