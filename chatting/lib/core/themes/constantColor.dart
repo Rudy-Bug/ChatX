@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class AppColors {
-  static const Color greenLight_01 = Color.fromARGB(255, 73, 219, 132);
+  static const Color greenLight_02 = Color.fromARGB(255, 73, 219, 132);
+  static const Color greenLight_01 = Color.fromARGB(255, 116, 204, 151);
   static const Color white = Color.fromARGB(255, 250, 250, 250);
   static const Color blueLight_01 = Color.fromARGB(255, 114, 179, 211);
   static const Color blueLight_02 = Color.fromARGB(255, 33, 136, 187);
@@ -20,6 +21,11 @@ class AppColors {
   static const Color black_001 = Color.fromARGB(255, 24, 26, 26);
   static const Color mintBlue_001 = Color.fromARGB(255, 163, 247, 247);
   static const Color snackBarColors = Color.fromARGB(100, 50, 54, 54);
+
+  // <-------- session for capacity type ---> 
+  static const Color whiteGrey_01_capacity = Color.fromARGB(80, 220, 217, 217);
+  static const Color blackTransfer_capacity = Color.fromARGB(255, 220, 217, 217);
+
 
   static LinearGradient linearStandard = const LinearGradient(
       colors: <Color>[whiteBlue_21, whiteMint_21],

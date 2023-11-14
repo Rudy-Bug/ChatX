@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 class CallAPI {
   final dio = Dio(BaseOptions(
       contentType: Headers.jsonContentType,
-      baseUrl: 'http://10.169.128.154:8080/api',
+      baseUrl: 'http://localhost:8080/api',
       connectTimeout: const Duration(seconds: 5),
       receiveTimeout: const Duration(seconds: 3)));
   // ifconfig en0 | grep inet ==> Tìm ip của macOs
