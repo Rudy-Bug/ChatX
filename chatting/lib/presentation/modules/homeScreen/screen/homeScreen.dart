@@ -52,9 +52,9 @@ class _HomeScreen extends State<HomeScreen> {
                   child: Container(
                     padding:const EdgeInsets.fromLTRB(0, 35, 0, 0),
                     width: double.infinity,
-                    decoration: BoxDecoration(
+                    decoration:const BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(55),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(55), topRight: Radius.circular(55)),
                     ),
                     child: ListView.builder(
                       padding: EdgeInsets.zero,

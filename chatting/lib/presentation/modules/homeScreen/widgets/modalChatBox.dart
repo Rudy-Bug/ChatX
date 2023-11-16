@@ -39,8 +39,11 @@ class ModelChatBox extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-               Text("${userModel.textBundle}",
-                  style:  const TextStyle(fontSize: 16) ),
+               SizedBox(
+                width: 182,
+                child: Text("${userModel.textBundle}",
+                  style:  const TextStyle(fontSize: 14) ),
+               ) ,  
               Expanded(child: Container()),
             ],
           ),
