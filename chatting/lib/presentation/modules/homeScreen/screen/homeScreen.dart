@@ -1,3 +1,5 @@
+import 'package:chatting/core/service/saveToJson.dart';
+import 'package:chatting/core/themes/constantString.dart';
 import 'package:chatting/data/mock/mockChatBoxUser.dart';
 import 'package:chatting/core/themes/constantColor.dart';
 import 'package:chatting/presentation/modules/homeScreen/widgets/modalChatBox.dart';
@@ -15,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreen extends State<HomeScreen> {
   final listModel = MocChatBoxUser.mockChatBoxUser ;  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +47,7 @@ class _HomeScreen extends State<HomeScreen> {
                 const SizedBox(
                   height: 70,
                 ),
-                const SimplyInformationWidget(),
+                 SimplyInformationWidget(),
                 const SizedBox(
                   height: 15,
                 ),

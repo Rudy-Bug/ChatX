@@ -1,12 +1,15 @@
+import 'package:chatting/core/service/saveToJson.dart';
 import 'package:chatting/core/themes/constantColor.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SimplyInformationWidget extends StatelessWidget {
-  const SimplyInformationWidget({super.key});
-
+   SimplyInformationWidget({super.key});
+  String fileName = "yourUser.json"; 
+         late   SaveToJson saveToJson =  SaveToJson();
   @override
   Widget build(BuildContext context) {
-
+            saveToJson.readJson(fileName);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 25),
       height: MediaQuery.of(context).size.width / 10 * 2.4,

@@ -1,17 +1,22 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:chatting/core/service/saveToJson.dart';
 import 'package:chatting/data/models/model.dart';
 import 'package:chatting/domain/entities/user.dart';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CallAPI {
   final dio = Dio(BaseOptions(
       contentType: Headers.jsonContentType,
-      baseUrl: 'http://192.168.1.3:8080/api',
+      baseUrl: 'http://localhost:8080/api',
       connectTimeout: const Duration(seconds: 5),
       receiveTimeout: const Duration(seconds: 3)));
   // ifconfig en0 | grep inet ==> Tìm ip của macOs
   String domain = 'http://localhost:8080/api'; // domain local
-  String domain2 = 'http://192.168.1.4:8080/api'; // domain ip 
-  String domain3Cty = 'http://10.169.128.154:8080/api' ;
+  String domain2 = 'http://192.168.1.4:8080/api'; // domain ip
+  String domain3Cty = 'http://10.169.128.154:8080/api';
   final url = "http://localhost:8080/api/user/signUp"; // anotation
 
   void configureDio() {
@@ -22,16 +27,12 @@ class CallAPI {
     dio.options.receiveTimeout = const Duration(seconds: 3);
   }
 
-
-
-
-  Future<ReponseModel> changePassword({User? user , String? newPassword}) async {
-   try {
+  Future<ReponseModel> changePassword({User? user, String? newPassword}) async {
+    try {
       await Future.delayed(
         const Duration(microseconds: 1000),
       );
       final response = await dio.patch(
-  
         '/user/changePasswordWithoutHeaders',
         data: {
           'Email': user?.email,
@@ -40,13 +41,13 @@ class CallAPI {
         },
       );
       return ReponseModel(
-          model: true ,
+          model: true,
           message: response.data["message"],
           statusCode: response.statusCode as int);
     } on DioException catch (e) {
       print("Into dioException ForgotPassword ?>");
       if (e.response?.statusCode == 404) {
-      // print("Into ${e.response?.data["message"]}");
+        // print("Into ${e.response?.data["message"]}");
         return ReponseModel(
             model: false,
             message: e.response?.data["message"],
@@ -59,23 +60,13 @@ class CallAPI {
   }
 
   Future<ReponseModel> getUser({String? email, String? password}) async {
-    User userDevice = User();
-
     try {
       final response = await dio.get(
         '/user/loginUser',
         data: {'Email': email, 'Password': password},
       );
-      print("crash here ? ");
-      if (response.statusCode == 200) {
-        final data = response.data["data"]["data"];
-        userDevice.name = data["Name"];
-        userDevice.code_id = data["Code_ID"];
-        userDevice.email = data["Email"];
-      }
-      print( response.data["data"]) ; 
       return ReponseModel(
-          model: userDevice,
+          model: response,
           message: response.data["message"],
           statusCode: response.statusCode as int);
     } on DioException catch (e) {
@@ -92,6 +83,7 @@ class CallAPI {
       }
     }
   }
+
 /*
   // Testting!
   Future<void> getUserB({String? email, String? password}) async { 
@@ -125,9 +117,8 @@ class CallAPI {
 
   */
 
-
   Future<ReponseModel> forgotPassword({User? user}) async {
-   try {
+    try {
       await Future.delayed(
         const Duration(microseconds: 1000),
       );
@@ -137,9 +128,18 @@ class CallAPI {
           'Email': user?.email,
         },
       );
-      // print("object: " +  response.data) ;  
+      // print("object: " +  response.data) ;
+      // Test Share_preference:v
+      if (response.statusCode == 200) {
+        final SharedPreferences sharedPreferences =
+            await SharedPreferences.getInstance();
+        final String? yourUserData =
+            sharedPreferences.getString('yourUserData');
+
+        print("data share_preference: $yourUserData");
+      }
       return ReponseModel(
-          model: response.data["data"]['data']['Password'] ,
+          model: response.data["data"]['data']['Password'],
           message: response.data["message"],
           statusCode: response.statusCode as int);
     } on DioException catch (e) {
