@@ -6,7 +6,7 @@ class AppStrings {
   
 
   // Key map Path_provider  {Not Share_preference} 
-  static const String userKey = "UserStorageKey"; 
-  static const String userRelevantKey = "UserRelevantStorageKey"; 
+  static const String userKey = "UserStorageKey.json"; 
+  static const String userRelevantKey = "UserRelevantStorageKey.json"; 
 
 }

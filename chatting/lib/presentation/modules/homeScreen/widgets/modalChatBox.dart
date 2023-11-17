@@ -19,7 +19,7 @@ class ModelChatBox extends StatelessWidget {
             margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
             child: CircleAvatar(
               backgroundImage: AssetImage(
-                  'assets/img/avatar/avatar${userModel.imageUrl}.jpg'),
+                  'assets/img/avatar/avatar0${userModel.imageUrl}.jpg'),
               radius: 35.0,
             ),
           ),

@@ -79,7 +79,7 @@ class _LoginScreen extends State<LoginScreen> {
                   listener: (context, state) {
                     switch (state.status) {
                       case ProcessLoginStatus.login:
-                      print("Into here?, login?");
+                        print("Into here?, login?");
                         if (LoginProcessBloc.pageController != null) {
                           LoginProcessBloc.pageController.animateToPage(0,
                               duration: const Duration(milliseconds: 500),
@@ -94,11 +94,10 @@ class _LoginScreen extends State<LoginScreen> {
                           context: context,
                           builder: (context2) {
                             return BlocProvider.value(
-                                  // fixed
-                                  value: BlocProvider.of<ForgotPasswordBloc>(
-                                      context),
-                                  child: const ForgotPasswordPage() 
-                            );
+                                // fixed
+                                value: BlocProvider.of<ForgotPasswordBloc>(
+                                    context),
+                                child: const ForgotPasswordPage());
                           },
                         );
                         break;

@@ -21,7 +21,7 @@ class _AppScreen extends State<AppScreen>{
   @override
   Widget build(BuildContext context) {
     
-    return MaterialApp(builder: (context, child) {
+    return MaterialApp(builder: (context, child)  {
       return BlocListener<AuthenticateBloc, AuthenticateState>(listener:(context, state) {
         switch(state.status)
         {

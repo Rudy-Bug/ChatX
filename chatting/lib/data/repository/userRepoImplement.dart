@@ -32,8 +32,6 @@ class UserService extends UserRepositories {
           name: e["Name"], image: e["codePicture"], code_id: e["Code_ID"]);
     }).toList());
     // lưu vô Path_provider :v
-    print("Json data user: " + jsonUser);
-    print("Json data user relevant: " + jsonRelevantUser);
     _saveToJson.writeJson(jsonUser, AppStrings.userKey);
     _saveToJson.writeJson(jsonRelevantUser, AppStrings.userRelevantKey);
 

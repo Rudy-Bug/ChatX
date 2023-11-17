@@ -42,6 +42,7 @@ class SaveToJson {
         //2. Update initialized _json by converting _jsonString<String>->_json<Map>
         // _json = jsonDecode(_jsonString);
         // print('2.(_readJson) _json: $_json \n - \n');
+        return jsonString ;  
       } catch (e) {
         // Print exception errors
         print('Tried reading _file error: $e');
