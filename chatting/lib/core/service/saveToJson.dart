@@ -1,7 +1,9 @@
 
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
-import 'dart:convert' ;  
+import 'dart:convert' ;
+
+import 'package:shared_preferences/shared_preferences.dart';  
 class SaveToJson {
    String kFileName = 'abc.json';
    bool _fileExists = false;
@@ -17,13 +19,18 @@ class SaveToJson {
   }
   
    void writeJson(String jsonObject, String fileName) async {
-    kFileName = fileName ;  
-    final filePath = await _localFile;
-    filePath.writeAsString(jsonObject);
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+await prefs.setString(fileName, jsonObject );
+    // kFileName = fileName ;  
+    // final filePath = await _localFile;
+    // filePath.writeAsString(jsonObject);
   }
 
   Future<dynamic> readJson( String fileName) async {
     // Initialize _filePath
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? action = prefs.getString(fileName);
+    return action ;  
     kFileName = fileName ;  
     filePath = await _localFile;
     print("ReadJson Path: $filePath");

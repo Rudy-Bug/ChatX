@@ -11,8 +11,8 @@ class CallAPI {
   final dio = Dio(BaseOptions(
       contentType: Headers.jsonContentType,
       baseUrl: 'http://localhost:8080/api',
-      connectTimeout: const Duration(seconds: 5),
-      receiveTimeout: const Duration(seconds: 3)));
+      connectTimeout:  Duration(seconds: 5),
+      receiveTimeout:  Duration(seconds: 3)));
   // ifconfig en0 | grep inet ==> Tìm ip của macOs
   String domain = 'http://localhost:8080/api'; // domain local
   String domain2 = 'http://192.168.1.4:8080/api'; // domain ip
@@ -20,7 +20,6 @@ class CallAPI {
   final url = "http://localhost:8080/api/user/signUp"; // anotation
 
   void configureDio() {
-    // Set default configs
     dio.options.baseUrl = domain;
     dio.options.contentType = Headers.jsonContentType;
     dio.options.connectTimeout = const Duration(seconds: 5);

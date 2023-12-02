@@ -5,12 +5,12 @@ import 'package:formz/formz.dart';
 
 class HomeScreenState extends Equatable {
   HomeScreenState(
-      { this.user ,
+      { this.user  ,
       this.userRelevant ,
       this.mess = "",
       this.status = FormzSubmissionStatus.initial});
 
-  User? user;
+   User? user;
   List<User>? userRelevant;
   String mess;
   FormzSubmissionStatus status;

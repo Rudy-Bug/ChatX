@@ -5,5 +5,6 @@ abstract class Routes {
   static const onBoard = '/on_board' ;  
   static  const login = '/login' ;
   static  const home = '/home' ;
+  static  const chatScreen = '/chatScreen' ;
 
 }

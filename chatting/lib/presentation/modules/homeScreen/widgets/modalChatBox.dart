@@ -1,13 +1,21 @@
+import 'package:chatting/core/routes/pages.dart';
+import 'package:chatting/core/routes/routes.dart';
 import 'package:chatting/core/themes/constantColor.dart';
 import 'package:chatting/domain/entities/modalChatBoxUser.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ModelChatBox extends StatelessWidget {
   ModelChatBox({super.key, required this.userModel});
   ModalUserChatBox userModel;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: () {
+        print("Chose this user ?") ;  
+        Get.toNamed(Routes.chatScreen ) ;  
+      },
+      child: Container(
       height: 75,
       margin: const EdgeInsets.all(10),
       child: Row(
@@ -54,6 +62,8 @@ class ModelChatBox extends StatelessWidget {
               child:  Text("${userModel.time}")),
         ],
       ),
+    )
+ ,
     );
-  }
+     }
 }

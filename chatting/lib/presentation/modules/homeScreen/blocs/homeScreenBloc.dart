@@ -19,6 +19,7 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       final storage = await jsonConvertering.convertStoragetoModel();
       this.listUser = storage['listUserRelevant'];
       this.user = storage['user'];
+      print("ADDD" + this.user.toString()) ; 
       await Future.delayed(Duration(seconds: 1), () {});
        emit(state.copyWith(
         user: this.user ,

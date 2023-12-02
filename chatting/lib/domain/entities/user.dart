@@ -7,7 +7,7 @@ class User {
   String? image;
 
   @override
-  String toString() => "name: $name ,  code_id: $code_id";
+  String toString() => "name: $name ,  code_id: $code_id , image: $image" ;
 
   User.empty()
       : name = "",
